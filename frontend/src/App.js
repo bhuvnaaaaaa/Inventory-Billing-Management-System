@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ItemList from './components/ItemList'; // your inventory listing
 import AddProductForm from './components/AddProductForm'; // form to add new product
-import ProductsPage from './pages/ProductsPage';
 import InvoicePage from './components/InvoicePage'; // invoice generator
 import axios from 'axios';
 
