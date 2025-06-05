@@ -9,50 +9,49 @@ const ItemList = ({ addToCart }) => { // Add addToCart as a prop
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true); // State to manage loading
 
-  // Fetch products
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/products');
-        if (response.data && Array.isArray(response.data.products)) {
-          setItems(response.data.products); // Set products if data structure is correct
-        } else {
-          console.error('Invalid data structure');
-        }
-        setLoading(false); // Data loaded, set loading to false
-      } catch (error) {
-        console.error('Error fetching data: ', error);
-        setLoading(false); // In case of error, stop loading
-      }
-    };
-    fetchItems();
-  }, []);
-
-  const handleAddProduct = (newProduct) => {
-    setItems((prevItems) => [...prevItems, newProduct]);
-  };
-
-  const handleDeleteProduct = async (productId) => {
+  const fetchItems = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/delete-product/${productId}`);
-      if (response.status === 200) {
-        setItems(items.filter(item => item.product_id !== productId));
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
+      if (response.data && Array.isArray(response.data.products)) {
+        setItems(response.data.products);
+      } else {
+        console.error('Invalid data structure');
       }
+      setLoading(false);
     } catch (error) {
-      console.error('Error deleting product:', error);
+      console.error('Error fetching data: ', error);
+      setLoading(false);
     }
   };
+  fetchItems();
+}, []);
 
-  const handleUpdateProduct = async (productId, updatedProduct) => {
-    try {
-      const response = await axios.put(`http://localhost:5000/api/update-product/${productId}`, updatedProduct);
-      if (response.status === 200) {
-        setItems(items.map(item => (item.product_id === productId ? { ...item, ...updatedProduct } : item)));
-      }
-    } catch (error) {
-      console.error('Error updating product:', error);
+const handleDeleteProduct = async (productId) => {
+  try {
+    const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/delete-product/${productId}`);
+    if (response.status === 200) {
+      setItems(items.filter(item => item.product_id !== productId));
     }
-  };
+  } catch (error) {
+    console.error('Error deleting product:', error);
+  }
+};
+
+const handleUpdateProduct = async (productId, updatedProduct) => {
+  try {
+    const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/update-product/${productId}`, updatedProduct);
+    if (response.status === 200) {
+      setItems(items.map(item => (item.product_id === productId ? { ...item, ...updatedProduct } : item)));
+    }
+  } catch (error) {
+    console.error('Error updating product:', error);
+  }
+};
+const handleAddProduct = (newProduct) => {
+  setItems((prevItems) => [...prevItems, newProduct]);
+};
+
 
   // Handle search filter
   const filteredItems = items && items.filter(item => 
