@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 function InvoicePage({ cart, calculateTotal, clearCart, addToCart, removeFromCart, fetchProducts }) {
