@@ -1,0 +1,75 @@
+/* Basic styles for the table and buttons */
+.item-list-container {
+    padding: 20px;
+  }
+  
+  .item-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .item-list-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .item-list-table th, .item-list-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  button {
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-product-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-product-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-product-form input {
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-product-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .add-product-form button:hover {
+    background-color: #218838;
+  }
+  
